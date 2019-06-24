@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet" />
+    <link href="vuetify.min.css" rel="stylesheet" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+</head>
+
+<body>
+    <div id="app" class="title mt-5 ml-5">
+        {{ mensaje }}
+        <p>{{ mensajeMinisculas }}</p>
+
+        <v-container>
+            <v-layout row wrap>
+                <v-flex xs12>
+                    <div>
+                        <v-btn color="purple" class="white--text" @click="AgregarAlumnos('Karen')">Agregar alumno
+                        </v-btn>
+                    </div>
+                </v-flex>
+                <v-flex xs4>
+                    <v-text-field label="Outline" outline v-model="nombrealumno" label="Nombre alumno:">
+                    </v-text-field>
+                </v-flex>
+                <v-flex xs8>
+                    <v-btn color="blue" class="white--text" @click="AgregarAlumnosdeTexfield()">Agregar alumno desde
+                        Textfield
+                    </v-btn>
+                </v-flex>
+                <v-flex xs12>
+                    <div>Lista Alumnos: {{ alumnos }}</div>
+                </v-flex>
+            </v-layout>
+        </v-container>
+
+        <v-container>
+            <div v-if="soyVisible">
+                <v-alert :value="true" class="pink darken-3 white--text">
+                    Mostrar alerta de información
+                </v-alert>
+            </div>
+            <div v-else>
+                <v-alert :value="true" class="red white--text">
+                    Mostrar alerta de Error
+                </v-alert>
+            </div>
+        </v-container>
+
+        <v-container>
+            <div v-if="informacion">
+                <v-alert :value="true" class="purple white--text">
+                    Información #1
+                </v-alert>
+            </div>
+            <div v-else-if="soyVisible">
+                <v-alert :value="true" class="indigo darken-1 white--text">
+                    Mostrar alerta de Error
+                </v-alert>
+            </div>
+            <div v-else>
+                <v-alert :value="true" class="pink  white--text">
+                    Información #2
+                </v-alert>
+            </div>
+        </v-container>
+
+        <v-container>
+            <div v-show="soyVisible">
+                <v-alert :value="true" class="deep-purple lighten-2 white--text">
+                    v-show
+                </v-alert>
+            </div>
+            <div v-show="informacion">
+                <v-alert :value="true" class="deep-purple lighten-2 white--text">
+                    v-show
+                </v-alert>
+            </div>
+        </v-container>
+
+        <v-container>
+            <div v-for="alumno in alumnos">
+                <v-img src="gitkraken.jpg" aspect-ratio="2.75" width="500"></v-img>
+                <div>{{ alumno }}</div>
+            </div>
+        </v-container>
+
+        <v-container>
+            <ul>
+                <li v-for="alumno in servicealumnos">Nombre: {{ alumno.Nombre }}</li>
+            </ul>
+        </v-container>
+
+        <v-container>
+            <v-flex xs5>
+                <v-img aspect-ratio="2.75" v-bind:src="image" height="310"></v-img>
+            </v-flex>
+        </v-container>
+
+        <v-container>
+            <v-flex xs4>
+                <v-text-field label="Outline" outline v-model="nombrealumno" label="Nombre alumno:">
+                </v-text-field>
+            </v-flex>
+        </v-container>
+    </div>
+
+    <script src="vue.js"></script>
+    <script src="vuetify.js"></script>
+
+    <script type="text/javascript">
+        //json
+        let json = {
+            studianteid: 101,
+            Nombre: "Ana",
+            activo: true,
+            extra: null,
+            ApellidoMaterno: "Marquez",
+            materias: {
+                Nombre: "base de datos",
+                promedio: 10,
+                parciales: [{
+                        parcial: "parcial 1",
+                        fecha: "2019/06/03",
+                        calificacion: 10
+                    },
+                    {
+                        parcial: "parcial 2",
+                        fecha: "2019/09/03",
+                        calificacion: 10
+                    }
+                ]
+            }
+        };
+        console.log(json);
+
+        const app = new Vue({
+            el: "#app",
+            data: {
+                mensaje: "hola mundo :)!",
+                nombrealumno: "Ana Marquez",
+                alumnos: ["Ana", "Eric", "Juan"],
+                soyVisible: true,
+                informacion: false,
+                label: "Nombre Completo",
+                image: "gitkrakenicon.png",
+                servicealumnos: []
+            },
+            computed: {
+                mensajeMinisculas() {
+                    return this.mensaje.toUpperCase();
+                }
+            },
+            methods: {
+                AgregarAlumnos(alumno) {
+                    this.alumnos.push(alumno);
+                },
+                AgregarAlumnosdeTexfield() {
+                    var esto = this;
+                    esto.alumnos.push(esto.nombrealumno);
+                }
+            },
+            created() {
+                fetch("https://api.myjson.com/bins/lyzh1")
+                    .then(response => response.json())
+                    .then(json => {
+                        this.servicealumnos = json;
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>
