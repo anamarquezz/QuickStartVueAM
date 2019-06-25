@@ -11,7 +11,7 @@
                     <v-text-field v-model="Edad" label="Edad"></v-text-field>
                     <v-text-field v-model="Direccion" label="Direccion"></v-text-field>
                     <v-text-field v-model="Nacionalidad" label="Nacionalidad"></v-text-field>
-                    <v-switch value input-value="true" v-model="Activo"></v-switch>
+                    <v-switch   v-model="Activo"  label="Es Activo?"  color="indigo"></v-switch>
                     <v-btn @click="otrapersona">Agregar</v-btn>
                 </form>
             </div>
