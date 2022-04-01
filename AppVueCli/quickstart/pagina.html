@@ -1,0 +1,104 @@
+<table border=\ "0\" cellpadding=\ "0\" cellspacing=\ "0\" style=\ "font-size:medium; margin-bottom:20px;\">
+    <tr>
+        <td>Search Option:</td>
+        <td>
+            <input type=\ "text\" id=\ "myInput\" onkeyup=\ "Find()\" placeholder=\ "\">
+        </td>
+    </tr>
+</table>
+
+
+<table id=\ "rptList\" border=\ "0\" cellpadding=\ "0\" cellspacing=\ "0\"
+    style=\"font-size:medium;margin-bottom:20px;\">
+
+    <tr>
+        <td style=\ "background-image:url('img/menu/line.gif'); background-repeat:repeat-x;\">
+            <img src=\ "img/menu/line.gif\" style=\ "border:0;\" />
+        </td>
+    </tr>
+
+
+
+    <tr>
+        <td onmouseover=\ "javascritp:bgColorOver(this);\" onmouseout=\ "javascript:bgColorOut(this);\">
+            <a href=\ "" + querySelect.getDataField( "class_name" ).ToString() + "?opcion=" + Request[ "opcion" ] + "\">
+                <img src=\ "img/EEstations/chart.png\" style=\ "border:0;\" />&nbsp;" +
+                querySelect.getDataField("report_name").ToString() + "</a>
+        </td>
+    </tr>
+
+
+</table>
+
+
+-----------------------------------------------------------------------------------------------------
+<div id=\"rptList\" class=\"container\">
+    <div class=\ "row\">
+        <div class=\ "col-3\">
+            <h4>Search Option:</h4>
+        </div>
+        <div class=\ "col-5\">
+            <input\ "form-control mr-sm-2\" type=\ "text\" id=\ "myInput\" onkeyup=\ "FindV2()\" placeholder=\ "\">
+        </div>
+    </div>
+
+
+
+    litReportList.Text += "
+    <div class=\ "col-3 m-3\ idcolumna" style=\ "width: 18rem;\"  nmouseover=\ "javascritp:bgColorOver(this);\" onmouseout=\ "javascript:bgColorOut(this);\">
+        <div id="card" class=\ "card\">
+            <a href=\"" + querySelect.getDataField( "class_name" ).ToString() + "?opcion=" + Request[ "opcion" ] + "\">
+                <img src=\ "img/EEstations/chart.png\" class=\ "card-img-top\"> </a>
+            <div class=\ "card-body\">
+                <h5 class=\ "card-title\">"+querySelect.getDataField("report_name").ToString()+ "</h5>
+            </div>
+        </div>
+    </div>";
+
+
+    litReportList.Text += "
+</div>"; litReportList.Text += "</div>";
+
+
+
+-----------------------------------------------------------------------------------------------------
+
+<div class=\ "container\">
+    <div class=\ "row\">
+        <div class=\ "col-3\">
+            <h4>Search Option:</h4>
+        </div>
+        <div class=\ "col-5\">
+            <input\ "form-control mr-sm-2\" type=\ "text\" id=\ "myInput\" onkeyup=\ "Find()\" placeholder=\ "\">
+        </div>
+    </div>
+
+    <div class=\ "row\">
+
+        <div class=\ "col-3 m-3\" style=\ "width: 18rem;\" nmouseover=\ "javascritp: bgColorOver(this);\"
+            onmouseout=\ "javascript: bgColorOut(this);\">
+            <div class=\ "card\" id=\ "rptList\">
+                <a href=\ "" + querySelect.getDataField( "class_name" ).ToString() + " ? opcion = " + Request[ "opcion"
+                    ] + "\">
+                    <img src=\ " img/EEstations/chart.png \" class=\ " card-img-top\"> </a>
+                <div class=\ " card-body \">
+                    <h5 class=\ "card-title\">" + querySelect.getDataField("report_name").ToString() + "</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<tr class="col-3">
+    <td class=\"card\" onmouseover=\ "javascritp:bgColorOver(this);\" onmouseout=\ "javascript:bgColorOut(this);\">
+        <a href=\" " + querySelect.getDataField( " class_name").ToString() + "?opcion=" + Request[ "opcion" ] + "\">
+            <img src=\ "img/EEstations/chart.png\" style=\ "border:0;\" /></a>
+        <div class=\ " card-body \">
+            <h5 class=\ "card-title\">" + querySelect.getDataField("report_name").ToString() + "</h5>
+        </div>
+    </td>
+</tr>
